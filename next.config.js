@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'walkingpadassets.s3.us-east-1.amazonaws.com'],
     unoptimized: true,
   },
   trailingSlash: true,
@@ -12,9 +12,6 @@ const nextConfig = {
   env: {
     EXPORT_MODE: 'true'
   },
-  output: 'export',
-  trailingSlash: true,
-   
 };
 
 module.exports = nextConfig;
