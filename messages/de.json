@@ -1,0 +1,184 @@
+{
+  "navigation": {
+    "logo": "LaufbandTests",
+    "treadmillReviews": "Laufband Tests",
+    "brands": "Marken",
+    "guide": "Ratgeber",
+    "blog": "Blog",
+    "about": "Über uns"
+  },
+  "homepage": {
+    "heroTitle": "Experten Laufband Tests & Bewertungen",
+    "heroSubtitle": "Unabhängige Bewertungen von zertifizierten Fitness-Profis, die jedes Gerät auf Leistung, Haltbarkeit und Wert testen.",
+    "expertOverview": {
+      "title": "Experten Übersicht",
+      "content": "Unser Team zertifizierter Fitness-Profis hat über 1.200 Stunden damit verbracht, Laufbänder unter realen Bedingungen zu testen. Wir bewerten jedes Gerät durch rigorose Leistungstests, Langzeit-Haltbarkeitsbewertungen und Benutzererfahrungsanalysen. Jede Bewertung ist datengestützt und gewährleistet ehrliche, zuverlässige Informationen für die beste Kaufentscheidung."
+    },
+    "popularBrands": {
+      "title": "Beliebte Marken die wir testen"
+    },
+    "testingProcess": {
+      "title": "Unser Testverfahren",
+      "speedTest": {
+        "title": "Geschwindigkeitstest",
+        "description": "Wir testen Geschwindigkeitsgenauigkeit, Beschleunigungsglätte und maximale Leistung in allen Geschwindigkeitsbereichen."
+      },
+      "inclineTest": {
+        "title": "Steigungstest",
+        "description": "Umfassende Steigungsfunktionalitätstests einschließlich Winkelgenauigkeit und Motorleistung unter Last."
+      },
+      "durabilityTest": {
+        "title": "Haltbarkeitstest",
+        "description": "Langzeit-Stresstests mit kontinuierlichem Betrieb zur Bewertung der Bauqualität und Komponentenhaltbarkeit."
+      },
+      "noiseTest": {
+        "title": "Geräuschpegeltest",
+        "description": "Dezibel-Messungen bei verschiedenen Geschwindigkeiten und Steigungen zur Bewertung der Geräuschpegel für den Heimgebrauch."
+      },
+      "comfortTest": {
+        "title": "Komfortbewertung",
+        "description": "Bewertung der Bandpolsterung, Deckstabilität und des allgemeinen Benutzerkomforts bei längerem Gebrauch."
+      },
+      "passed": "Bestanden"
+    },
+    "expertOpinion": {
+      "title": "Experten Meinung",
+      "testimonial": "Nach dem Testen hunderter Laufbänder in meiner 12-jährigen Laufbahn kann ich mit Zuversicht sagen, dass die hier empfohlenen Geräte den besten Wert und die beste Leistung in jeder Kategorie darstellen. Unsere Testmethodik stellt sicher, dass jeder Aspekt von Benutzerfreundlichkeit, Haltbarkeit und Leistung gründlich bewertet wird.",
+      "trainerName": "Steve Austin",
+      "trainerTitle": "Zertifizierter Personal Trainer, NASM",
+      "testedCount": "Getestet: 18 Laufbänder"
+    },
+    "bestTreadmills": {
+      "title": "Beste Laufbänder 2025",
+      "sportstech": {
+        "name": "Sportstech F15",
+        "description": "Professionelles Laufband mit fortschrittlicher Stoßdämpfung und Smartphone-Integration.",
+        "badge": "Testsieger"
+      },
+      "nordictrack": {
+        "name": "NordicTrack Commercial 1750",
+        "description": "Premium-Laufband mit interaktivem Training und Steigungstechnologie.",
+        "badge": "Beste Wahl"
+      },
+      "proform": {
+        "name": "ProForm Pro 2000",
+        "description": "Funktionsreiches Laufband mit iFit-Integration und leistungsstarkem Motor.",
+        "badge": "Redaktions-Tipp"
+      },
+      "horizon": {
+        "name": "Horizon 7.8 AT",
+        "description": "Zuverlässiges Mittelklasse-Laufband mit ausgezeichneter Bauqualität und Garantie.",
+        "badge": "Bester Wert"
+      },
+      "buyNow": "Jetzt kaufen"
+    },
+    "customerReviews": {
+      "title": "Kundenbewertungen"
+    }
+  },
+  "guide": {
+    "title": "Laufband Kaufratgeber",
+    "introduction": "Unser umfassender Ratgeber hilft Ihnen, das perfekte Laufband für Ihre Fitnessziele, Ihren Platz und Ihr Budget zu wählen.",
+    "keyFeatures": {
+      "title": "Wichtige Eigenschaften",
+      "motorPower": {
+        "title": "Motorleistung",
+        "description": "Achten Sie auf die Dauerleistung (CHP). 2,5+ CHP zum Gehen, 3,0+ CHP zum Laufen."
+      },
+      "inclineSettings": {
+        "title": "Steigungseinstellungen",
+        "description": "Manuelle oder automatische Steigungsverstellung. Suchen Sie nach 10-15% maximaler Steigung für Abwechslung."
+      },
+      "beltSize": {
+        "title": "Laufbandgröße",
+        "description": "Mindestens 140 cm Länge zum Laufen. Breite sollte 50 cm oder mehr für bequeme Bewegung sein."
+      },
+      "weightCapacity": {
+        "title": "Gewichtskapazität",
+        "description": "Wählen Sie ein Laufband mit mindestens 25 kg mehr als der schwerste vorgesehene Benutzer."
+      },
+      "display": {
+        "title": "Display-Funktionen",
+        "description": "Suchen Sie nach klaren, gut lesbaren Displays mit wesentlichen Metriken und Programmoptionen."
+      },
+      "foldability": {
+        "title": "Faltbarkeit & Transport Barkeit",
+        "description": "Für effektives Home-Office Training braucht dein Walking Pad ein flaches Design (< 12 cm Höhe) und Rollen für leichtes Verstauen – perfekt für kompakte Räume."
+      },
+      "cushioning": {
+        "title": "Polsterung & Komfort",
+        "description": "Multi-Zonen-Polsterungssysteme reduzieren Gelenkbelastung bei gleichzeitiger Stabilität."
+      }
+    },
+    "useCase": {
+      "title": "Empfehlungen nach Anwendungsfall",
+      "beginners": {
+        "title": "Für Anfänger",
+        "description": "Fokus auf Benutzerfreundlichkeit, Sicherheitsmerkmale und vorprogrammierte Workouts."
+      },
+      "runners": {
+        "title": "Für Läufer",
+        "description": "Priorisieren Sie Motorleistung, Bandgröße und fortschrittliche Polsterungssysteme."
+      },
+      "seniors": {
+        "title": "Für Senioren",
+        "description": "Betonen Sie Sicherheitsgriffe, einfache Bedienelemente und gelenkschonende Polsterung."
+      },
+      "homeGym": {
+        "title": "Heimstudio-Nutzer",
+        "description": "Berücksichtigen Sie Platzanforderungen, Geräuschpegel und Multi-User-Funktionen."
+      }
+    },
+    "comparisonTips": {
+      "title": "Unser Testverfahren",
+      "description": "Wir bewerten jedes Laufband durch umfassende Tests einschließlich Geschwindigkeitsgenauigkeit, Steigungsfunktionalität, Geräuschpegel, Haltbarkeit und Benutzerkomfort."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen"
+    }
+  },
+  "blog": {
+    "title": "Fitness & Laufband Blog",
+    "introduction": "Experten-Einblicke, Trainingstipps und die neuesten Nachrichten in Fitness-Technologie und Laufband-Innovation.",
+    "readMore": "Weiterlesen"
+  },
+  "about": {
+    "title": "Über uns",
+    "howWeReview": {
+      "title": "Wie wir testen",
+      "description": "Unser Expertenteam führt umfassende Tests jedes Laufbands durch standardisierte Protokolle durch, einschließlich Leistungs-Benchmarks, Haltbarkeitsbewertungen, Benutzererfahrungsevaluierung und Langzeit-Zuverlässigkeitstests."
+    },
+    "reviewStandards": {
+      "title": "Unsere Test-Standards",
+      "performanceTesting": "Leistungsbasierte Tests",
+      "durabilityChecks": "Langzeit-Haltbarkeitsprüfungen",
+      "userFeedback": "Echtes Nutzer-Feedback",
+      "expertVerified": "Experten-verifizierte Ergebnisse",
+      "transparentScoring": "Transparentes Bewertungssystem"
+    },
+    "whoWeAre": {
+      "title": "Wer wir sind",
+      "description": "2020 von einem Team zertifizierter Fitness-Profis gegründet, wurde LaufbandTests geschaffen, um den Mangel an umfassenden, unvoreingenommenen Laufband-Tests am Markt zu beheben."
+    },
+    "ourTeam": {
+      "title": "Unser Team"
+    }
+  },
+  "brands": {
+    "title": "Marken-Bewertungen",
+    "overview": "Überblick",
+    "productDetails": "Produktdetails",
+    "prosAndCons": "Vor- & Nachteile",
+    "whatWeLike": "Was uns gefällt",
+    "whatWeDontLike": "Was uns nicht gefällt",
+    "finalVerdict": "Fazit",
+    "userFeedback": "Nutzer-Feedback",
+    "buyNow": "Jetzt kaufen"
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "stars": "Sterne",
+    "rating": "Bewertung"
+  }
+}

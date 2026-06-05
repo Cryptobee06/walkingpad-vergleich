@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+.treadmill-bacgroundimage{
+  background-image: url('https://walkingpadassets.s3.us-east-1.amazonaws.com/images/treadmills/nor-banner.jpg') !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+ height: 66vh;
+  background-position:bottom;
+  object-fit: cover;
+}
+.card-height{
+  height: 460px !important;
+  margin-bottom: 10% !important;
+}
+.privacy-background{
+  background-color: #dbeafe !important;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+.paragraph-background{
+  background-color: #fff;
+  padding: 5%;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1)) !important;
+  border-radius: 30px;
+}
+.box-white-border{
+  background-color: #fff !important;
+  border-radius: 50px !important;
+  padding: 5% !important;
+}
+.review-description{
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1)) !important;
+}
+.background-image-size{
+  background-position: top !important;
+}
+.margin-banner{
+  margin-top: 10%;
+}
+.text-blog-color{
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+  background-color:#dbeafe !important ;
+}
+html{
+  scroll-behavior: smooth !important;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.background-banner {
+  background-image: url('/Assets/Banner 2.png');
+  background-repeat: no-repeat;
+  background-size: cover;       /* scales image proportionally to always cover */
+  background-position: center;  /* keeps image centered on all screens */
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+

@@ -1,0 +1,185 @@
+{
+  "navigation": {
+    "logo": "TreadmillReviews",
+    "treadmillReviews": "Treadmill Reviews",
+    "brands": "Brands",
+    "guide": "Guide",
+    "blog": "Blog",
+    "about": "About"
+  },
+  "homepage": {
+    "heroTitle": "Expert Treadmill Reviews & Testing",
+    "heroSubtitle": "Independent reviews from certified fitness professionals who test every machine for performance, durability, and value.",
+    "expertOverview": {
+      "title": "Expert Overview",
+      "content": "Our team of certified fitness professionals has spent over 1,200 hours testing treadmills in real-world conditions. We evaluate each machine through rigorous performance tests, long-term durability assessments, and user experience analysis. Every review is backed by data, ensuring you get honest, reliable information to make the best purchase decision for your fitness goals."
+    },
+    "popularBrands": {
+      "title": "Popular Brands We Test",
+      "Subtitle":"Trusted by the most respected fitness brands in the industry."
+    },
+    "testingProcess": {
+      "title": "Our Testing Process",
+      "speedTest": {
+        "title": "Speed Test",
+        "description": "We test speed accuracy, acceleration smoothness, and maximum performance across all speed ranges."
+      },
+      "inclineTest": {
+        "title": "Incline Test",
+        "description": "Comprehensive incline functionality testing including angle accuracy and motor performance under load."
+      },
+      "durabilityTest": {
+        "title": "Durability Test",
+        "description": "Long-term stress testing with continuous operation to evaluate build quality and component longevity."
+      },
+      "noiseTest": {
+        "title": "Noise Level Test",
+        "description": "Decibel measurements at various speeds and inclines to assess noise levels for home use."
+      },
+      "comfortTest": {
+        "title": "Comfort Assessment",
+        "description": "Evaluation of belt cushioning, deck stability, and overall user comfort during extended use."
+      },
+      "passed": "Passed"
+    },
+    "expertOpinion": {
+      "title": "Expert Opinion",
+      "testimonial": "After testing hundreds of treadmills over my 12-year career, I can confidently say that the machines we recommend here represent the best value and performance in each category. Our testing methodology ensures that every aspect of usability, durability, and performance is thoroughly evaluated. The treadmills featured on this site have all passed our rigorous certification process and continue to perform excellently in real-world conditions.",
+      "trainerName": "Steve Austin",
+      "trainerTitle": "Certified Personal Trainer, NASM",
+      "testedCount": "Tested: 18 treadmills"
+    },
+    "bestTreadmills": {
+      "title": "Best Treadmills in 2025",
+      "sportstech": {
+        "name": "Sportstech F15",
+        "description": "Professional-grade treadmill with advanced shock absorption and smartphone integration.   459489494949",
+        "badge": "Test Winner"
+      },
+      "Citysports": {
+        "name": "Citysports Commercial 1750",
+        "description": "Premium treadmill with interactive training and incline technology.",
+        "badge": "Best Choice"
+      },
+      "kiddoza": {
+        "name": "kiddoza Pro 2000",
+        "description": "Feature-rich treadmill with iFit integration and powerful motor.",
+        "badge": "Editor's Pick"
+      },
+      "Superun": {
+        "name": "Superun 7.8 AT",
+        "description": "Reliable mid-range treadmill with excellent build quality and warranty.",
+        "badge": "Best Value"
+      },
+      "buyNow": "Buy Now"
+    },
+    "customerReviews": {
+      "title": "Customer Reviews"
+    }
+  },
+  "guide": {
+    "title": "Treadmill Buying Guide",
+    "introduction": "Our comprehensive guide helps you choose the perfect treadmill for your fitness goals, space, and budget.",
+    "keyFeatures": {
+      "title": "Key Features to Consider",
+      "motorPower": {
+        "title": "Motor Power",
+        "description": "Look for continuous duty horsepower (CHP) rating. 2.5+ CHP for walking, 3.0+ CHP for running."
+      },
+      "inclineSettings": {
+        "title": "Incline Settings",
+        "description": "Manual or automatic incline adjustment. Look for 10-15% maximum incline for variety."
+      },
+      "beltSize": {
+        "title": "Running Belt Size",
+        "description": "Minimum 55\" length for running. Width should be 20\" or more for comfortable movement."
+      },
+      "weightCapacity": {
+        "title": "Weight Capacity",
+        "description": "Choose a treadmill rated for at least 50 lbs more than the heaviest intended user."
+      },
+      "display": {
+        "title": "Display Features",
+        "description": "Look for clear, easy-to-read displays with essential metrics and program options."
+      },
+      "foldability": {
+        "title": "Foldability",
+        "description": "Space-saving design with hydraulic lift assist for easy storage and setup."
+      },
+      "cushioning": {
+        "title": "Cushioning & Comfort",
+        "description": "Multi-zone cushioning systems reduce joint impact while maintaining stability."
+      }
+    },
+    "useCase": {
+      "title": "Recommendations by Use Case",
+      "beginners": {
+        "title": "For Beginners",
+        "description": "Focus on ease of use, safety features, and pre-programmed workouts."
+      },
+      "runners": {
+        "title": "For Runners",
+        "description": "Prioritize motor power, belt size, and advanced cushioning systems."
+      },
+      "seniors": {
+        "title": "For Seniors",
+        "description": "Emphasize safety rails, easy controls, and joint-friendly cushioning."
+      },
+      "homeGym": {
+        "title": "Home Gym Users",
+        "description": "Consider space requirements, noise levels, and multi-user features."
+      }
+    },
+    "comparisonTips": {
+      "title": "Our Testing Process",
+      "description": "We evaluate each treadmill through comprehensive testing including speed accuracy, incline functionality, noise levels, durability, and user comfort. Our systematic approach ensures objective, reliable comparisons."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    }
+  },
+  "blog": {
+    "title": "Fitness & Treadmill Blog",
+    "introduction": "Expert insights, training tips, and the latest news in fitness technology and treadmill innovation.",
+    "readMore": "Read More"
+  },
+  "about": {
+    "title": "About Us",
+    "howWeReview": {
+      "title": "How We Do Reviews",
+      "description": "Our expert team conducts comprehensive testing of every treadmill through standardized protocols including performance benchmarks, durability assessments, user experience evaluation, and long-term reliability testing to provide you with honest, data-driven recommendations."
+    },
+    "reviewStandards": {
+      "title": "Our Review Standards",
+      "performanceTesting": "Performance-Based Testing",
+      "durabilityChecks": "Long-Term Durability Checks",
+      "userFeedback": "Real User Feedback",
+      "expertVerified": "Expert-Verified Results",
+      "transparentScoring": "Transparent Scoring System"
+    },
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "Founded in 2020 by a team of certified fitness professionals, TreadmillReviews was created to address the lack of comprehensive, unbiased treadmill testing in the market. Our mission is to help consumers make informed decisions by providing thorough, professional evaluations of fitness equipment."
+    },
+    "ourTeam": {
+      "title": "Our Team"
+    }
+  },
+  "brands": {
+    "title": "Brand Reviews",
+    "overview": "Overview",
+    "productDetails": "Product Details",
+    "prosAndCons": "Pros & Cons",
+    "whatWeLike": "What We Like",
+    "whatWeDontLike": "What We Don't Like",
+    "finalVerdict": "Final Verdict",
+    "userFeedback": "User Feedback",
+    "buyNow": "Buy Now"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "stars": "stars",
+    "rating": "Rating"
+  }
+}
