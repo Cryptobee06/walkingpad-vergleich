@@ -233,7 +233,7 @@ const brandData = {
       en: "The Sportstech sWalk Lite delivers exceptional value with its advanced cushioning system and solid build quality. While it may lack some premium features, it excels in the fundamentals that matter most for home fitness.",
       de: "Das Sportstech sWalk Lite Walkingpad überzeugt als kompakter und leiser Homefitness-Trainer,ideal für das tägliche Training im Büro oder Zuhause. Mit robuster Dämpfung, Smart-App-Integration, platzsparendem Design und einem leisen Motor erreicht es eine Bewertung von 4,9 von 5 – Spitzenklasse im Walkingpad Test.",
     },
-    rating: 4.9,
+    rating: 4.8,
     buyLink: "https://www.sportstech.de/laufband/swalk-lite",
   },
   Citysports: {
@@ -1098,7 +1098,7 @@ const brandData = {
     // buyLink: 'https://www.urevo.com/collections/foldable-treadmill/products/urevo-foldi-3s-treadmill'
   },
   Sportstechwalkmate: {
-    name: "Sportstechwalkmate",
+    name: "Sportstech",
     images: [
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/Walkmate.png",
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/100-WalkMate.jpg",
@@ -1405,7 +1405,7 @@ const brandData = {
       en: "The Sportstech sWalk Lite delivers exceptional value with its advanced cushioning system and solid build quality. While it may lack some premium features, it excels in the fundamentals that matter most for home fitness.",
       de: "Das Sportstech Walkmate überzeugt als kompaktes und leises Walkingpad für Homeoffice und Zuhause, ideal für entspanntes Gehen unter dem Schreibtisch. Mit App-Integration, transportabler Bauweise, manueller Steigung und sofortiger Einsatzbereitschaft erreicht es eine Bewertung",
     },
-    rating: 4.9,
+    rating: 4.7,
     buyLink: "https://www.sportstech.de/laufband/walkmate",
   },
   Copant: {

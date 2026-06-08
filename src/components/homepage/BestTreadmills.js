@@ -6,6 +6,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Link from "next/link";
+import {
+  ratingToGrade,
+  getGradeLabel,
+  getGradeHeading,
+  getGradeBgClass,
+  formatGradeValue,
+} from "@/utils/grade";
 
 const treadmillsData = [
   {
@@ -14,7 +21,7 @@ const treadmillsData = [
     model: "sWalk Lite",
     image:
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/images/products/treadmill-sportstech.webp",
-    rating: 4.9,
+    rating: 4.8,
     badge: "testWinner",
     badgeColor: "bg-yellow-500",
     link: "https://www.sportstech.de/laufband/swalk-lite",
@@ -47,7 +54,7 @@ const treadmillsData = [
     model: "WalkMate",
     image:
       "/100-WalkMate.jpg",
-    rating: 4.9,
+    rating: 4.7,
     badge: "testWinner",
     badgeColor: "bg-yellow-500",
     link: "https://www.sportstech.de/laufband/walkmate",
@@ -79,25 +86,24 @@ const getBadgeText = (badgeType, t) => {
   return "";
 };
 
-const StarRating = ({ rating }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 !== 0;
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+const GradeRating = ({ rating, locale }) => {
+  const grade = ratingToGrade(rating);
+  const heading = getGradeHeading(locale);
+  const label = getGradeLabel(grade.key, locale);
+  const pill = getGradeBgClass(grade.key);
+  const gradeValue = formatGradeValue(grade.value, locale);
 
   return (
-    <div className="flex items-center space-x-1 mt-2">
-      {[...Array(fullStars)].map((_, i) => (
-        <span key={i} className="text-yellow-400 text-lg">
-          ★
+    <div className="flex flex-wrap items-center mt-2 gap-y-1">
+      <span
+        className={`inline-flex items-center px-2.5 py-1 rounded-md border text-sm font-bold tabular-nums ${pill}`}
+      >
+        <span className="mr-1.5 text-xs font-semibold opacity-80 whitespace-nowrap">
+          {heading}
         </span>
-      ))}
-      {hasHalfStar && <span className="text-yellow-400 text-lg">☆</span>}
-      {[...Array(emptyStars)].map((_, i) => (
-        <span key={i} className="text-gray-300 text-lg">
-          ★
-        </span>
-      ))}
-      <span className="text-sm text-gray-600 ml-2">{rating}</span>
+        <span className="text-base min-w-[3ch] text-center">{gradeValue}</span>
+      </span>
+      <span className="ml-2 text-sm text-gray-600 whitespace-nowrap">{label}</span>
     </div>
   );
 };
@@ -168,7 +174,7 @@ export default function BestTreadmills() {
                   <p className="text-sm text-gray-600 line-clamp-2 mb-3">
                    {t(`${treadmill.id}.description`) || "No description available"}
                   </p>
-                  <StarRating rating={treadmill.rating} />
+                  <GradeRating rating={treadmill.rating} locale={locale} />
                   <div className="mt-auto pt-5">
                     <a
                       href={treadmill.link}

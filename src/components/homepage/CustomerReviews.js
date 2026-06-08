@@ -1,6 +1,13 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { useTranslations } from '@/contexts/LanguageContext';
+import { useTranslations, useLocale } from '@/contexts/LanguageContext';
+import {
+  ratingToGrade,
+  getGradeLabel,
+  getGradeHeading,
+  getGradeBgClass,
+  formatGradeValue,
+} from '@/utils/grade';
 
 const reviewsData = [
   {
@@ -45,41 +52,31 @@ const reviewsData = [
   },
 ];
 
-const StarRating = ({ rating }) => {
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 !== 0;
-  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
+const GradeRating = ({ rating, locale }) => {
+  const grade = ratingToGrade(rating);
+  const heading = getGradeHeading(locale);
+  const label = getGradeLabel(grade.key, locale);
+  const pill = getGradeBgClass(grade.key);
+  const gradeValue = formatGradeValue(grade.value, locale);
 
   return (
-    <div className="flex items-center space-x-1">
-      {[...Array(fullStars)].map((_, i) => (
-        <svg key={`full-${i}`} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-        </svg>
-      ))}
-      {hasHalfStar && (
-        <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-          <defs>
-            <linearGradient id="half-star-review">
-              <stop offset="50%" stopColor="currentColor"/>
-              <stop offset="50%" stopColor="#e5e7eb"/>
-            </linearGradient>
-          </defs>
-          <path fill="url(#half-star-review)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-        </svg>
-      )}
-      {[...Array(emptyStars)].map((_, i) => (
-        <svg key={`empty-${i}`} className="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-        </svg>
-      ))}
+    <div className="flex items-center justify-center">
+      <span
+        className={`inline-flex items-center px-3 py-1 rounded-md border text-sm font-bold tabular-nums ${pill}`}
+      >
+        <span className="mr-1.5 text-xs font-semibold opacity-80 whitespace-nowrap">
+          {heading}
+        </span>
+        <span className="text-base min-w-[3ch] text-center">{gradeValue}</span>
+        <span className="ml-2 text-xs font-medium opacity-90 whitespace-nowrap">{label}</span>
+      </span>
     </div>
   );
 };
 
 export default function CustomerReviews() {
   const t = useTranslations('homepage.customerReviews');
+  const locale = useLocale();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 console.log(t('firstrev.description'),"4444444444444")
@@ -130,7 +127,7 @@ const translatedReviews = t('reviews', { returnObjects: true });
         />
       </div>
       <div className="flex justify-center mb-4">
-        <StarRating rating={review.rating} />
+        <GradeRating rating={review.rating} locale={locale} />
       </div>
       <blockquote className="relative italic text-xl text-gray-100 leading-relaxed mb-6 max-w-2xl mx-auto">
         <span className="text-3xl text-white mr-1">“</span>

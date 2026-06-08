@@ -236,7 +236,7 @@ const brandData = {
       en: "The Sportstech sWalk Lite stands out in the walking pad comparison with its superior cushioning, solid build, and thoughtful smart features. While it may lack some advanced presets, it excels in core areas essential for home fitness: comfort, performance, and smart integration.",
       de: "Das Sportstech ssWalk Lite Walkingpad überzeugt als kompakter und leiser Homefitness-Trainer, ideal für das tägliche Training im Büro oder Zuhause. Mit robuster Dämpfung, Smart-App-Integration, platzsparendem Design und einem leisen Motor erreicht es eine Bewertung von 4,9 von 5 – Spitzenklasse im Walkingpad Test.",
     },
-    rating: 4.9,
+    rating: 4.8,
     buyLink: "https://www.sportstech.de/laufband/swalk-lite",
   },
   Citysports: {
@@ -1121,7 +1121,7 @@ const brandData = {
     // buyLink: 'https://www.urevo.com/collections/foldable-treadmill/products/urevo-foldi-3s-treadmill'
   },
   Sportstechwalkmate: {
-    name: "Sportstechwalkmate",
+    name: "Sportstech",
     images: [
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/Walkmate.png",
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/100-WalkMate.jpg",
@@ -1390,7 +1390,7 @@ const brandData = {
       en: "The Sportstech Walkmate is best suited for users who want to stay active without dedicating space to a full treadmill. It works well for slow-paced walking, step tracking, and maintaining movement throughout the day. However, users seeking running workouts, incline training, or extended cardio sessions may find it limited.",
       de: "Das Sportstech ssWalk Lite Walkingpad überzeugt als kompakter und leiser Homefitness-Trainer, ideal für das tägliche Training im Büro oder Zuhause. Mit robuster Dämpfung, Smart-App-Integration, platzsparendem Design und einem leisen Motor erreicht es eine Bewertung von 4,9 von 5 – Spitzenklasse im Walkingpad Test.",
     },
-    rating: 4.9,
+    rating: 4.7,
     buyLink: "https://www.sportstech.de/laufband/swalk-lite",
   },
   Copant: {

@@ -20,6 +20,14 @@ import {
   Activity,
 } from "lucide-react";
 import FAQ from "@/components/guide/FAQ";
+import { useLocale } from "@/contexts/LanguageContext";
+import {
+  ratingToGrade,
+  getGradeLabel,
+  getGradeHeading,
+  getGradeBgClass,
+  formatGradeValue,
+} from "@/utils/grade";
 
 const brands = [
   "Sportstech sWalk Lite",
@@ -38,7 +46,7 @@ const testData = {
   "Sportstech sWalk Lite": {
     image:
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/sWalk Lite_1.jpg",
-    overallScore: 4.86,
+    overallScore: 4.76,
     status: "Passed",
     features: [
       "Rotatable 21.5-inch touch display with Sportstech Live app for immersive training and real-time tracking.",
@@ -58,7 +66,7 @@ const testData = {
       Durability: {
         description:
           "This model withstood over 100 hours of simulated high-impact workouts without showing signs of wear or structural compromise. The belt retained its grip, and the deck showed minimal compression fatigue. With its commercial-grade frame, reinforced joints, and corrosion-resistant coating, Sportstech sets the standard for long-term durability.",
-        rating: "5 / 5",
+        rating: "4.8 / 5",
         status: "Passed",
         icon: Shield,
       },
@@ -72,14 +80,14 @@ const testData = {
       Noise: {
         description:
           "Despite its powerful motor, Sportstech maintained near-silent operation. It consistently produced sound levels under 55 decibels across all speeds. This makes it suitable for apartment living or early morning sessions without disturbing others.",
-        rating: "4.9 / 5",
+        rating: "4.8 / 5",
         status: "Passed",
         icon: Volume2,
       },
       Comfort: {
         description:
           "Comfort testing covered belt cushioning, deck width, handgrip positioning, and display ergonomics. Sportstech offers a roomy deck that accommodates natural stride lengths and reduces joint stress.",
-        rating: "4.9 / 5",
+        rating: "4.8 / 5",
         status: "Passed",
         icon: Heart,
       },
@@ -95,27 +103,27 @@ const testData = {
       testDuration: "Extended testing",
       testCriteria: {
         "Design & Build Quality": {
-          rating: 5,
+          rating: 4.8,
           description: "Slim, high-quality finish, modern LED display",
         },
         "Noise Level": {
-          rating: 5,
+          rating: 4.8,
           description: "Extremely quiet (< 55 dB)",
         },
         "Cushioning & Comfort": {
-          rating: 5,
+          rating: 4.7,
           description: "Smooth, stable running surface",
         },
         Control: {
-          rating: 5,
+          rating: 4.8,
           description: "App + remote, intuitive operation",
         },
         "Office Suitability": {
-          rating: 5,
+          rating: 4.8,
           description: "Perfect for working while standing or walking",
         },
         "Value for Money": {
-          rating: 5,
+          rating: 4.8,
           description: "Very fair for the quality",
         },
       },
@@ -134,7 +142,7 @@ const testData = {
   "Sportstech WalkMate": {
     image:
       "https://walkingpadassets.s3.us-east-1.amazonaws.com/walkingpad+assets/walkmate/Walkmate 001 (1).jpg",
-    overallScore: 4.9,
+    overallScore: 4.7,
     status: "Passed",
     features: [
       "Ultra-compact design with foldable frame for easy storage under desks.",
@@ -161,14 +169,14 @@ const testData = {
       Incline: {
         description:
           "The WalkMate features a fixed flat surface optimized for walking while working. While it lacks adjustable incline, this design choice prioritizes stability and desk compatibility.",
-        rating: "3.5 / 5",
+        rating: "4.0 / 5",
         status: "Limited",
         icon: TrendingUp,
       },
       Noise: {
         description:
           "Exceptional noise performance with operation under 50 decibels. The WalkMate is virtually silent, making it ideal for video calls and shared office spaces. No motor whine or belt friction noise detected.",
-        rating: "5 / 5",
+        rating: "4.8 / 5",
         status: "Passed",
         icon: Volume2,
       },
@@ -191,27 +199,27 @@ const testData = {
       testDuration: "Extended testing",
       testCriteria: {
         "Design & Build Quality": {
-          rating: 5,
+          rating: 4.8,
           description: "Premium materials, ultra-slim profile, professional finish",
         },
         "Noise Level": {
-          rating: 5,
+          rating: 4.8,
           description: "Virtually silent (< 50 dB), perfect for calls",
         },
         "Cushioning & Comfort": {
-          rating: 5,
+          rating: 4.8,
           description: "Excellent multi-layer cushioning system",
         },
         Control: {
-          rating: 5,
+          rating: 4.8,
           description: "Smart app with auto-speed, remote included",
         },
         "Office Suitability": {
-          rating: 5,
+          rating: 4.7,
           description: "Specifically designed for desk work",
         },
         "Value for Money": {
-          rating: 4,
+          rating: 4.8,
           description: "Premium price justified by quality and features",
         },
       },
@@ -1004,6 +1012,7 @@ const testData = {
 };
 
 export default function TestingProcessPage() {
+  const locale = useLocale();
   const [activeBrand, setActiveBrand] = useState("Sportstech sWalk Lite");
 
   const brandData = testData[activeBrand];
@@ -1015,24 +1024,21 @@ export default function TestingProcessPage() {
     }
   }, [brandData?.image]);
 
-  const renderStars = (ratingStr) => {
-    const rating = parseFloat(ratingStr);
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  const renderGrade = (ratingStr) => {
+    const grade = ratingToGrade(parseFloat(ratingStr));
+    const heading = getGradeHeading(locale);
+    const label = getGradeLabel(grade.key, locale);
+    const gradeValue = formatGradeValue(grade.value, locale);
+    const pill = getGradeBgClass(grade.key);
 
     return (
-      <div className="flex items-center">
-        {[...Array(fullStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-yellow-500 fill-current" />
-        ))}
-        {hasHalfStar && (
-          <Star className="w-4 h-4 text-yellow-500 fill-current opacity-50" />
-        )}
-        {[...Array(emptyStars)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-gray-300" />
-        ))}
-      </div>
+      <span
+        className={`inline-flex items-center px-2.5 py-1 rounded-md border text-xs font-bold tabular-nums ${pill}`}
+      >
+        <span className="mr-1.5 font-semibold opacity-80 whitespace-nowrap">{heading}</span>
+        <span className="text-sm min-w-[3ch] text-center">{gradeValue}</span>
+        <span className="ml-1.5 font-medium opacity-90 whitespace-nowrap">{label}</span>
+      </span>
     );
   };
 
@@ -1163,11 +1169,8 @@ export default function TestingProcessPage() {
                     >
                       {brandData.status}
                     </div>
-                    <div className="flex items-center space-x-2 text-gray-600">
-                      <Star className="w-5 h-5 text-yellow-500 fill-current" />
-                      <span className="font-bold text-lg text-gray-900">
-                        {brandData.overallScore.toFixed(1)}/5
-                      </span>
+                    <div className="flex items-center">
+                      {renderGrade(brandData.overallScore)}
                     </div>
                   </div>
                 </div>
@@ -1237,10 +1240,7 @@ export default function TestingProcessPage() {
 
                       <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
-                          {renderStars(data.rating)}
-                          <span className="text-sm text-gray-500">
-                            ({data.rating})
-                          </span>
+                          {renderGrade(data.rating)}
                         </div>
                       </div>
                     </div>
@@ -1329,16 +1329,7 @@ export default function TestingProcessPage() {
                                   </p>
                                 </div>
                                 <div className="flex items-center">
-                                  {[...Array(5)].map((_, i) => (
-                                    <Star
-                                      key={i}
-                                      className={`w-5 h-5 ${
-                                        i < data.rating
-                                          ? "text-yellow-500 fill-current"
-                                          : "text-gray-300"
-                                      }`}
-                                    />
-                                  ))}
+                                  {renderGrade(data.rating)}
                                 </div>
                               </div>
                             </div>
@@ -1398,40 +1389,67 @@ export default function TestingProcessPage() {
                   <div>
                     <h4 className="text-xl font-bold text-green-900">
                       {activeBrand === "Sportstech sWalk Lite" 
-                        ? "Overall Test Winner: Sportstech sWalk Lite"
-                        : "Premium Choice: Sportstech WalkMate"}
+                        ? (locale === "de" ? "Gesamttestsieger: Sportstech sWalk Lite" : "Overall Test Winner: Sportstech sWalk Lite")
+                        : (locale === "de" ? "Premium-Auswahl: Sportstech WalkMate" : "Premium Choice: Sportstech WalkMate")}
                     </h4>
                     <p className="text-green-700">
                       {activeBrand === "Sportstech sWalk Lite"
-                        ? "Highest overall score across all testing categories"
-                        : "Best for professional office environments"}
+                        ? (locale === "de" ? "Höchste Gesamtwertung über alle Testkategorien" : "Highest overall score across all testing categories")
+                        : (locale === "de" ? "Beste Wahl für professionelle Office-Umgebungen" : "Best for professional office environments")}
                     </p>
                   </div>
                 </div>
                 <p className="text-green-800 leading-relaxed">
                   {activeBrand === "Sportstech sWalk Lite" ? (
-                    <>
-                      After conducting comprehensive tests across all brands,
-                      Sportstech sWalk Lite emerged as the most balanced and high-performing
-                      Walkingpad, excelling in every category with an outstanding
-                      overall score of <strong>4.86/5</strong>.
-                      <br /><br />
-                      In the 2025 test, the sWalk Lite by Sportstech impressed in
-                      nearly every category. It combines a compact, high-quality
-                      design with quiet operation and user-friendly controls. For
-                      home office use, it offers the best overall package and is
-                      therefore our 2025 test winner.
-                    </>
+                    locale === "de" ? (
+                      <>
+                        Nach umfassenden Tests aller Marken setzte sich das
+                        Sportstech sWalk Lite als ausgewogenstes und leistungsstarkes
+                        Walkingpad durch. Es punktete in jeder Kategorie mit einer
+                        herausragenden Gesamtnote von <strong className="inline-flex items-center px-2.5 py-1 rounded-md border text-xs font-bold tabular-nums bg-green-100 text-green-800 border-green-300">Note 1.2 Sehr Gut</strong>.
+                        <br /><br />
+                        Im Test 2025 überzeugte das sWalk Lite in nahezu allen Bereichen.
+                        Es kombiniert ein kompaktes, hochwertiges Design mit leisem Betrieb
+                        und einfacher Bedienung. Für das Homeoffice bietet es das beste
+                        Gesamtpaket und ist daher unser Testsieger 2025.
+                      </>
+                    ) : (
+                      <>
+                        After conducting comprehensive tests across all brands,
+                        Sportstech sWalk Lite emerged as the most balanced and high-performing
+                        Walkingpad, excelling in every category with an outstanding
+                        overall score of <strong className="inline-flex items-center px-2.5 py-1 rounded-md border text-xs font-bold tabular-nums bg-green-100 text-green-800 border-green-300">Grade 1.2 Very Good</strong>.
+                        <br /><br />
+                        In the 2025 test, the sWalk Lite by Sportstech impressed in
+                        nearly every category. It combines a compact, high-quality
+                        design with quiet operation and user-friendly controls. For
+                        home office use, it offers the best overall package and is
+                        therefore our 2025 test winner.
+                      </>
+                    )
                   ) : (
-                    <>
-                      The Sportstech WalkMate represents the premium tier of walking pads,
-                      specifically engineered for professional office environments with an
-                      impressive score of <strong>4.75/5</strong>.
-                      <br /><br />
-                      With its ultra-quiet operation under 50dB, smart auto-speed control,
-                      and safety sensors, the WalkMate is the ideal choice for professionals
-                      who need absolute silence during video calls and all-day reliability.
-                    </>
+                    locale === "de" ? (
+                      <>
+                        Das Sportstech WalkMate steht für das Premium-Segment unter den
+                        Walkingpads und wurde speziell für professionelle Office-Umgebungen
+                        entwickelt. Es erreichte eine starke Bewertung von <strong className="inline-flex items-center px-2.5 py-1 rounded-md border text-xs font-bold tabular-nums bg-green-100 text-green-800 border-green-300">Note 1.3 Sehr Gut</strong>.
+                        <br /><br />
+                        Mit seinem ultra-leisen Betrieb unter 50 dB, intelligenter
+                        Auto-Speed-Steuerung und Sicherheitssensoren ist das WalkMate die
+                        ideale Wahl für alle, die bei Video-Calls absolute Ruhe und im
+                        Alltag höchste Zuverlässigkeit brauchen.
+                      </>
+                    ) : (
+                      <>
+                        The Sportstech WalkMate represents the premium tier of walking pads,
+                        specifically engineered for professional office environments with an
+                        impressive score of <strong className="inline-flex items-center px-2.5 py-1 rounded-md border text-xs font-bold tabular-nums bg-green-100 text-green-800 border-green-300">Grade 1.3 Very Good</strong>.
+                        <br /><br />
+                        With its ultra-quiet operation under 50dB, smart auto-speed control,
+                        and safety sensors, the WalkMate is the ideal choice for professionals
+                        who need absolute silence during video calls and all-day reliability.
+                      </>
+                    )
                   )}
                 </p>
               </div>

@@ -1,6 +1,13 @@
 'use client';
 import { useTranslations, useLocale } from '@/contexts/LanguageContext';
 import { useState } from 'react';
+import {
+  ratingToGrade,
+  getGradeLabel,
+  getGradeHeading,
+  getGradeBgClass,
+  formatGradeValue,
+} from '@/utils/grade';
 
 // ✅ Brand-specific feedback data (all in one place)
 
@@ -11,7 +18,7 @@ const feedbackData = {
         id: 1,
         name: 'Lena M',
         avatar: 'LM',
-        rating: 5,
+        rating: 4.7,
         comment: 'Just received mine—and it is top-tier! Build quality is excellent, and the motor runs smooth and silent.!',
         date: '5 min ago',
 
@@ -20,7 +27,7 @@ const feedbackData = {
         id: 2,
         name: 'Markus R',
         avatar: 'MR',
-        rating: 5,
+        rating: 4.8,
         comment: 'Comfort levels are outstanding—very gentle on my knees. The setup guide could be clearer, though.',
         date: 'a day ago',
 
@@ -29,7 +36,7 @@ const feedbackData = {
         id: 3,
         name: 'Sabine K',
         avatar: 'SK',
-        rating: 5,
+        rating: 4.8,
         comment: 'Three months of daily use, and it performs flawlessly. The incline works great, and the belt remains smooth.',
         date: ' 3 days ago',
 
@@ -38,7 +45,7 @@ const feedbackData = {
         id: 4,
         name: 'Jonas P',
         avatar: 'JP',
-        rating: 5,
+        rating: 4.6,
         comment: 'High-quality build and great value for money. I use it almost daily and feel fitter.',
         date: 'a week ago',
 
@@ -47,7 +54,7 @@ const feedbackData = {
         id: 5,
         name: 'Claudia W',
         avatar: 'CW',
-        rating: 5,
+        rating: 4.8,
         comment: 'I was surprised by how stable the walking pad is. It feels secure even when I train on it for longer periods.',
         date: 'a month ago',
 
@@ -58,7 +65,7 @@ const feedbackData = {
         id: 1,
         name: 'Lena M',
         avatar: 'LM',
-        rating: 5,
+        rating: 4.7,
         comment: 'Das Walking Pad ist super leise und passt perfekt unter meinen Schreibtisch.Endlich kann ich mich auch im Home-Office mehr bewegen!',
         date: 'Vor 5 Minuten',
 
@@ -67,7 +74,7 @@ const feedbackData = {
         id: 2,
         name: 'Markus R',
         avatar: 'MR',
-        rating: 5,
+        rating: 4.8,
         comment: 'Sehr platzsparend, einfach zusammenzuklappen und schnell verstaut. Genau das richtige Fitnessgerät für meine kleine Wohnung.',
         date: 'vor einem Tag',
 
@@ -76,7 +83,7 @@ const feedbackData = {
         id: 3,
         name: 'Sabine K',
         avatar: 'SK',
-        rating: 5,
+        rating: 4.8,
         comment: 'Die App-Steuerung motiviert mich, meine Schritte im Blick zu behalten. Tolle Kombination aus Technik und Bewegung.',
         date: 'Vor 3 Tagen',
 
@@ -85,7 +92,7 @@ const feedbackData = {
         id: 4,
         name: 'Jonas P',
         avatar: 'JP',
-        rating: 5,
+        rating: 4.6,
         comment: 'Hochwertige Verarbeitung und gutes Preis-Leistungs-Verhältnis. Ich nutze es fast täglich und fühle mich fitter.',
         date: 'vor einer Woche',
 
@@ -94,7 +101,7 @@ const feedbackData = {
         id: 5,
         name: 'Claudia W',
         avatar: 'CM',
-        rating: 5,
+        rating: 4.8,
         comment: 'Ich war überrascht, wie stabil das Walking Pad ist. Es fühlt sich sicher an, auch wenn ich länger darauf trainiere.',
         date: 'vor einem Monat',
 
@@ -648,13 +655,13 @@ const feedbackData = {
 
     ]
   },
-  sportstechwalkmate: {
+  sportstech: {
     en: [
       {
         id: 31,
         name: 'Lena M',
         avatar: 'LM',
-        rating: 5,
+        rating: 4.8,
         comment: 'Just received mine—and it is top-tier! Build quality is excellent, and the motor runs smooth and silent.!',
         date: '5 min ago',
 
@@ -663,7 +670,7 @@ const feedbackData = {
         id: 32,
         name: 'Markus R',
         avatar: 'MR',
-        rating: 5,
+        rating: 4.8,
         comment: 'Comfort levels are outstanding—very gentle on my knees. The setup guide could be clearer, though.',
         date: 'a day ago',
 
@@ -672,7 +679,7 @@ const feedbackData = {
         id: 33,
         name: 'Sabine K',
         avatar: 'SK',
-        rating: 5,
+        rating: 4.7,
         comment: 'Three months of daily use, and it performs flawlessly. The incline works great, and the belt remains smooth.',
         date: ' 3 days ago',
 
@@ -701,7 +708,7 @@ const feedbackData = {
         id: 31,
         name: 'Sophie B.',
         avatar: 'SB',
-        rating: 5,
+        rating: 4.8,
         comment: 'Super stabil und leise, passt perfekt unter den Schreibtisch. Ideal für den ganzen Tag im Home-Office!',
         date: 'Vor 5 Minuten',
 
@@ -710,7 +717,7 @@ const feedbackData = {
         id: 32,
         name: 'David S.',
         avatar: 'DS',
-        rating: 5,
+        rating: 4.8,
         comment: 'Einfache Montage, tolle App-Tracking – merke direkt den Fitness-Boost. Empfehlung pur!',
         date: 'vor einem Tag',
 
@@ -719,7 +726,7 @@ const feedbackData = {
         id: 33,
         name: 'Laura H.',
         avatar: 'LH',
-        rating: 5,
+        rating: 4.7,
         comment: 'Kompakt, leicht zu verstauen und motiviert täglich. Beste Investition für mehr Bewegung!',
         date: 'Vor 3 Tagen',
       },
@@ -740,15 +747,21 @@ const generateUserFeedback = (brandName, locale) => {
   return feedbackData[key]?.en || [];
 };
 
-const StarRating = ({ rating }) => {
+const GradeRating = ({ rating, locale }) => {
+  const grade = ratingToGrade(rating);
+  const heading = getGradeHeading(locale);
+  const label = getGradeLabel(grade.key, locale);
+  const pill = getGradeBgClass(grade.key);
+  const gradeValue = formatGradeValue(grade.value, locale);
+
   return (
-    <div className="flex items-center space-x-1">
-      {[...Array(5)].map((_, i) => (
-        <svg key={i} className={`w-4 h-4 ${i < rating ? 'text-yellow-400' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      ))}
-    </div>
+    <span
+      className={`inline-flex items-center px-2 py-0.5 rounded-md border text-xs font-bold tabular-nums ${pill}`}
+    >
+      <span className="mr-1 font-semibold opacity-80 whitespace-nowrap">{heading}</span>
+      <span className="text-sm min-w-[3ch] text-center">{gradeValue}</span>
+      <span className="ml-1.5 font-medium opacity-90 whitespace-nowrap">{label}</span>
+    </span>
   );
 };
 
@@ -807,7 +820,7 @@ export default function UserFeedback({ brand }) {
                       </span>
                     </div>
 
-                    <StarRating rating={feedback.rating} />
+                    <GradeRating rating={feedback.rating} locale={locale} />
                   </div>
                 </div>
 

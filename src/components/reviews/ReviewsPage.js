@@ -12,7 +12,11 @@ const allWalkingPadsData = [
     brand: "Sportstech",
     model: "sWalk Lite",
     slug: "sportstechswalklite",
-    rating: 4.9,
+    grade: {
+      value: "1.2",
+      en: "Very Good",
+      de: "Sehr gut",
+    },
     category: "both",
     badge: {
       en: "Test Winner 2025",
@@ -63,7 +67,11 @@ const allWalkingPadsData = [
     brand: "Citysports",
     model: "CS-WP6",
     slug: "Citysports",
-    rating: 4.0,
+    grade: {
+      value: "2.0",
+      en: "Good",
+      de: "Gut",
+    },
     category: "advanced",
     badge: {
       en: "",
@@ -114,7 +122,11 @@ const allWalkingPadsData = [
     brand: "Kiddoza",
     model: "Under Desk Walking Pad",
     slug: "kiddoza",
-    rating: 3.5,
+    grade: {
+      value: "2.6",
+      en: "Satisfactory",
+      de: "Befriedigend",
+    },
     category: "advanced",
     badge: {
       en: "",
@@ -165,7 +177,11 @@ const allWalkingPadsData = [
     brand: "Superun",
     model: "B.A06-C",
     slug: "Superun",
-    rating: 3.9,
+    grade: {
+      value: "2.1",
+      en: "Good",
+      de: "Gut",
+    },
     category: "advanced",
     badge: {
       en: "",
@@ -216,7 +232,11 @@ const allWalkingPadsData = [
     brand: "Urevo",
     model: "SpaceWalk E1L",
     slug: "Urevo",
-    rating: 3.9,
+    grade: {
+      value: "2.1",
+      en: "Good",
+      de: "Gut",
+    },
     category: "advanced",
     badge: {
       en: "",
@@ -267,7 +287,11 @@ const allWalkingPadsData = [
     brand: "Sportstech",
     model: "WalkMate",
     slug: "sportstechwalkmate",
-    rating: 4.9,
+    grade: {
+      value: "1.3",
+      en: "Very Good",
+      de: "Sehr gut",
+    },
     category: "both",
     badge: {
       en: "Test Winner 2025",
@@ -318,7 +342,11 @@ const allWalkingPadsData = [
     brand: "Copant",
     model: "Raceable Walking Pad",
     slug: "Copant",
-    rating: 3.5,
+    grade: {
+      value: "2.5",
+      en: "Good",
+      de: "Gut",
+    },
     category: "amateur",
     badge: {
       en: "Test Winner 2025",
@@ -369,7 +397,11 @@ const allWalkingPadsData = [
     brand: "Merach",
     model: "T26B1 3-in-1 Treadmill",
     slug: "Merach",
-    rating: 3.4,
+    grade: {
+      value: "2.6",
+      en: "Satisfactory",
+      de: "Befriedigend",
+    },
     category: "amateur",
     badge: {
       en: "Test Winner 2025",
@@ -420,7 +452,11 @@ const allWalkingPadsData = [
     brand: "Cursor",
     model: "Walking Pad",
     slug: "Cursor",
-    rating: 3.8,
+    grade: {
+      value: "2.2",
+      en: "Good",
+      de: "Gut",
+    },
     category: "amateur",
     badge: {
       en: "Test Winner 2025",
@@ -471,7 +507,11 @@ const allWalkingPadsData = [
     brand: "Cazvian",
     model: "Walking Pad",
     slug: "Cazvian",
-    rating: 3.7,
+    grade: {
+      value: "2.3",
+      en: "Good",
+      de: "Gut",
+    },
     category: "amateur",
     badge: {
       en: "Test Winner 2025",
@@ -552,37 +592,16 @@ function ReviewsContent() {
 
   const walkingPadsData = getFilteredWalkingPads();
 
-  const renderStars = (rating) => {
+  const renderGrade = (grade) => {
+    if (!grade) return null;
+    const label = locale === "de" ? "Note" : "Grade";
+    const gradeValue = locale === "de" ? String(grade.value).replace(".", ",") : grade.value;
     return (
-      <div className="flex items-center justify-center gap-1">
-        {[...Array(5)].map((_, i) => {
-          const filled = i < Math.floor(rating);
-          const half = !filled && i < rating;
-
-          return (
-            <span key={i} className="relative inline-block w-4 h-4">
-              {/* Background (empty) star */}
-              <Star className="w-4 h-4 text-gray-300 absolute inset-0" />
-
-              {/* Half-fill overlay using clip */}
-              {half && (
-                <span
-                  className="absolute inset-0 overflow-hidden"
-                  style={{ width: "50%" }}
-                >
-                  <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                </span>
-              )}
-
-              {/* Full-fill star */}
-              {filled && (
-                <Star className="w-4 h-4 fill-yellow-400 text-yellow-400 absolute inset-0" />
-              )}
-            </span>
-          );
-        })}
-        <span className="ml-1 text-sm font-semibold text-gray-700">
-          {rating}
+      <div className="flex items-center justify-center gap-1 tabular-nums">
+        <span className="text-sm font-semibold text-gray-700">
+          <span className="whitespace-nowrap">{label}:</span>{" "}
+          <span className="text-green-700 min-w-[3ch] inline-block text-center">{gradeValue}</span>{" "}
+          <span className="text-gray-600 font-normal whitespace-nowrap">({grade[locale]})</span>
         </span>
       </div>
     );
@@ -740,8 +759,8 @@ function ReviewsContent() {
 
       {/* Comparison Table Section */}
       <section className="py-12">
-        <div className="min-h-screen bg-gray-50 px-2 sm:px-4 lg:px-6">
-          <div className="max-w-8xl mx-auto">
+        <div className="min-h-screen bg-gray-50 px-2 sm:px-4 lg:px-6 xl:px-8 2xl:px-12">
+          <div className="max-w-[1900px] 2xl:max-w-[2200px] mx-auto">
             {/* Mobile Cards View (< 768px) */}
             <div className="text-right mb-6 flex justify-between items-center"></div>
             <div className="md:hidden space-y-4 mb-6">
@@ -780,7 +799,7 @@ function ReviewsContent() {
                     <h3 className="font-bold text-lg mb-2 text-gray-800">
                       {brand.brand} {brand.model}
                     </h3>
-                    <div className="mb-3">{renderStars(brand.rating)}</div>
+                    <div className="mb-3">{renderGrade(brand.grade)}</div>
                   </div>
 
                   {/* Features List for Mobile */}
@@ -828,12 +847,12 @@ function ReviewsContent() {
               <div className="w-full relative">
                 {/* TABLE WRAPPER */}
                 <div className="w-full overflow-x-auto" ref={tableRef}>
-                  <table className="border-collapse">
+                  <table className="border-collapse min-w-full">
                     {/* HEADER */}
                     <thead>
                       <tr className="bg-gray-100">
                         {/* FIXED FIRST COLUMN */}
-                        <th className="sticky left-0 z-30 bg-gray-100 border-r w-[260px] p-3 text-center font-semibold text-gray-700">
+                        <th className="sticky left-0 z-30 bg-gray-100 border-r w-[190px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] p-3 text-center font-semibold text-gray-700">
                           <span className="text-lg">
                             {pageText.model[locale]}
                           </span>
@@ -843,7 +862,7 @@ function ReviewsContent() {
                         {walkingPadsData.map((brand, index) => (
                           <th
                             key={brand.id}
-                            className="p-2 text-center align-top w-[300px]"
+                            className="p-2 xl:p-3 text-center align-top w-[230px] lg:w-[250px] xl:w-[280px] 2xl:w-[320px]"
                           >
                             <div
                               className={`relative bg-white rounded-lg p-4 shadow-md border transition-all duration-500
@@ -867,7 +886,7 @@ function ReviewsContent() {
 
                               {/* Product Image */}
                               <div className="pt-2">
-                                <div className="w-full h-32 mb-4 bg-gray-50 rounded-md flex items-center justify-center overflow-hidden">
+                                <div className="w-full h-32 xl:h-36 mb-4 bg-gray-50 rounded-md flex items-center justify-center overflow-hidden">
                                   <img
                                     src={brand.image}
                                     alt={`${brand.brand} ${brand.model}`}
@@ -882,7 +901,7 @@ function ReviewsContent() {
 
                                 {/* Rating */}
                                 <div className="mb-3">
-                                  {renderStars(brand.rating)}
+                                  {renderGrade(brand.grade)}
                                 </div>
 
                                 {/* Review Button */}
@@ -911,8 +930,8 @@ function ReviewsContent() {
                             } border-t`}
                         >
                           {/* FIXED FEATURE NAME COLUMN */}
-                          <td className="sticky left-0 z-20 bg-gray-100 border-r w-[260px] p-4 font-semibold text-gray-700">
-                            <span className="text-base">
+                          <td className="sticky left-0 z-20 bg-gray-100 border-r w-[190px] lg:w-[220px] xl:w-[250px] 2xl:w-[280px] p-4 font-semibold text-gray-700">
+                            <span className="text-sm lg:text-base">
                               {feature.label[locale]}
                             </span>
                           </td>
@@ -921,7 +940,7 @@ function ReviewsContent() {
                           {walkingPadsData.map((brand) => (
                             <td
                               key={brand.id}
-                              className={`p-4 text-center text-base w-[300px] ${brand.id === "sportstech"
+                              className={`p-4 xl:px-5 text-center text-sm lg:text-base w-[230px] lg:w-[250px] xl:w-[280px] 2xl:w-[320px] ${brand.id === "sportstech"
                                 ? "bg-green-50 text-green-800 font-medium"
                                 : "text-gray-700"
                                 }`}
